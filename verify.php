@@ -15,7 +15,33 @@ define ('THIS_PAGE', basename($_SERVER['PHP_SELF']));
 
 //variable passphrase is the submitted Password. Must equal passphrase.
 $passphrase = $_POST['passphrase'];
-$password = abc123
+$password = 'abc123';
+
+
+    
+    
+    if(!isset($_SESSION['password'])){
+            //make sure form passphrase is set
+    
+            if(!isset($passphrase)){
+                //Show Form
+                passform();
+                die();
+            }
+            elseif ($passphrase != $password){
+                //Show Form
+                passform();
+                die();
+            }
+            else{
+                echo 'Open Sesame';
+            }
+        }
+    else{
+        passForm();
+        die(); 
+     }//End if(isset($passphrase)) CONDITIONAL
+               
 
 function passForm(){
     echo '<h2>Enter the Passphrase</h2>
@@ -29,29 +55,3 @@ function passForm(){
             </form>
             ';
 }
-    
-    
-    if(!isset($passphrase)){
-            //make sure form passphrase is set
-    
-            if(!isset($passphrase){
-                //Show Form
-                passform();
-                die();
-            }
-            elseif ($passphrase != $password){
-                //Show Form
-                passform();
-                die();
-            }
-            else{
-                echo 'Passphrase correct';
-
-            }
-               }
-    else{
-        passForm();
-        die(); 
-        }//End if(isset($passphrase)) CONDITIONAL
-        
-
